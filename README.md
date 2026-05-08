@@ -15,6 +15,21 @@ The project is designed to automate work with large volumes of NHSU data. The ma
 
 ## 📂 Structure & Components
 
+## 🚀 Як запустити / How to Run
+
+Проєкт використовує локальний сервер для забезпечення коректної навігації між сторінками.
+
+### Linux & Windows:
+1. Запустіть відповідний скрипт для вашої системи:
+   - **Linux:** `./start.sh`
+   - **Windows:** `start.bat`
+
+Ці скрипти використовують `serve.py`, який автоматично знаходить вільний порт та відкриває головну сторінку в браузері.
+
+*Примітка: Для роботи потрібен встановлений Python 3.*
+
+---
+
 ### 1. ⚙️ Smart Converter (`converter.html`)
 Allows you to quickly convert heavy `.xlsx` NHSU reports into a lightweight `.json` format. This is necessary for instant data loading into the analytical dashboard.
 - Drag-and-drop support.
