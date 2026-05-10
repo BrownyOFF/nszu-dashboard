@@ -1,98 +1,134 @@
 # 🏥 NHSU: Analytics & Audit
 
-**NHSU: Analytics & Audit** is a set of web tools for processing, converting, and deep visual analysis of medical reports from the National Health Service of Ukraine (NHSU).
+**NHSU: Analytics & Audit** is a powerful set of web tools for processing, converting, and deep visual analysis of medical reports from the National Health Service of Ukraine (NHSU). The project is designed to transform "dry" tables into actionable insights, helping medical institutions effectively manage finances and service quality.
 
-## 📌 Project Overview
-The project is designed to automate work with large volumes of NHSU data. The main feature is **full confidentiality**. All calculations and file processing occur exclusively on the client-side (in your browser). Data is never transmitted anywhere.
+---
+
+## 📌 Key Features
+
+- **⚙️ Smart Converter (`converter.html`):** Rapid conversion of bulky `.xlsx` reports into a lightweight `.json` format without data loss.
+- **📊 Interactive Dashboard (`index.html`):** Visualization of key metrics, error auditing, and financial analysis.
+- **🛡️ Full Confidentiality:** All calculations are performed on your computer (Client-side). No patient data is ever transmitted to any servers.
+- **💰 Financial Control:** Automatic calculation of earned and lost funds based on a flexible tariff system.
+- **👨‍⚕️ Staff Analytics:** Physician ratings by income, error count, and workload.
+
+---
+
+## 🚀 Quick Start
+
+A built-in Python server is used to ensure correct local script execution and page navigation.
+
+### Running the system:
+1. Ensure you have **Python 3** installed.
+2. Run the file corresponding to your OS:
+   - **Windows:** Open `start.bat`
+   - **Linux/macOS:** Run `sh start.sh`
+3. Your browser will automatically open the main page (`main.html`).
+
+---
 
 ## 🛠 Tech Stack
-- **Core:** Vanilla HTML5, CSS3, JavaScript (ES6+).
-- **Design:** Custom CSS system using CSS Variables and the *Plus Jakarta Sans* font.
-- **Libraries (via CDN):**
-  - [SheetJS (xlsx.js)](https://sheetjs.com/) — for parsing XLSX files.
-  - [Chart.js](https://www.chartjs.org/) — for building interactive charts.
-- **Data Persistence:** `localStorage` for price settings.
 
-## 📂 Structure & Components
+The project is built on modern web technologies without heavy frameworks, ensuring maximum performance:
 
-## 🚀 Як запустити / How to Run
-
-Проєкт використовує локальний сервер для забезпечення коректної навігації між сторінками.
-
-### Linux & Windows:
-1. Запустіть відповідний скрипт для вашої системи:
-   - **Linux:** `./start.sh`
-   - **Windows:** `start.bat`
-
-Ці скрипти використовують `serve.py`, який автоматично знаходить вільний порт та відкриває головну сторінку в браузері.
-
-*Примітка: Для роботи потрібен встановлений Python 3.*
+- **Frontend:** Vanilla JS (ES6+), HTML5, CSS3.
+- **Design:** Custom design system using CSS Variables (Plus Jakarta Sans font).
+- **Data Processing:** [SheetJS (xlsx.js)](https://sheetjs.com/) — for Excel parsing.
+- **Visualization:** [Chart.js](https://www.chartjs.org/) — for interactive charts.
+- **Persistence:** `localStorage` for personal tariff settings.
 
 ---
 
-### 1. ⚙️ Smart Converter (`converter.html`)
-Allows you to quickly convert heavy `.xlsx` NHSU reports into a lightweight `.json` format. This is necessary for instant data loading into the analytical dashboard.
-- Drag-and-drop support.
-- Automatic conversion of all Excel workbook sheets.
-- JSON file generation for download.
+## 📂 System Modules
 
-### 2. 📊 Analytics Dashboard (`index.html`)
-The main SPA (Single Page Application) dashboard for analyzing the received data.
-- **General Overview:** Key performance indicators and trends.
-- **Error Audit:** Detailed analysis of record rejection reasons (with parsing of nested JSON from text fields).
-- **Financial Impact:** Calculation of earned and lost funds based on a flexible tariff system.
-- **Physician Analysis:** Ratings by income, workload, and error count.
-- **Patient Portrait:** Demographic data, focusing on the pediatric population (0-17 years).
-- **Record Registry:** Convenient table with pagination and tooltips for error codes.
+### 1. Smart Converter
+- Drag-and-drop support for file uploads.
+- Automatic column detection (ID, dates, doctors, etc.).
+- Converts all sheets of an Excel file into a single JSON.
 
-## 🗄 Data Mapping
-The system features intelligent column mapping. It automatically searches for required data (ID, date, doctor, service package, report status, errors, etc.), even if the column order in the NHSU file changes.
-
-## 💰 Business Logic
-The application implements a dynamic service cost evaluation system. You can manually configure tariffs for different NHSU packages in the "Settings" tab. These changes will be saved in your browser.
-
-## 🚀 How to Start
-1. Open `converter.html` and upload your `.xlsx` report from NHSU.
-2. Download the generated `.json` file.
-3. Open `index.html` and select the received `.json` file.
-4. Explore the analytics!
+### 2. Analytics Dashboard
+- **General Overview:** Success metrics and report submission dynamics.
+- **Error Audit:** Deep analysis of rejection reasons (parsing JSON details from NHSU).
+- **Financial Impact:** Potential income calculation.
+- **Patient Portrait:** Age and gender distribution.
+- **Record Registry:** User-friendly table with search and error code tooltips.
 
 ---
-**Author:** Tymur Halas ([BrownyOFF](https://github.com/BrownyOFF))
 
+## 📋 System Requirements
+
+- Modern web browser (Chrome, Firefox, Edge, Safari).
+- Python 3.x (for the local server).
+
+---
+
+**Author:** [Tymur Halas](https://github.com/BrownyOFF)
+
+---
 ---
 
 # 🏥 НСЗУ: Аналітика та Аудит (UA)
 
-**НСЗУ: Аналітика та Аудит** — це набір веб-інструментів для обробки, конвертації та глибокого візуального аналізу медичних звітів Національної служби здоров'я України (НСЗУ).
-
-## 📌 Огляд проєкту
-Проєкт розроблений для автоматизації роботи з великими обсягами даних НСЗУ. Головна особливість — **повна конфіденційність**. Усі обчислення та обробка файлів відбуваються виключно на стороні клієнта (Client-side) у вашому браузері. Дані нікуди не передаються.
-
-## 🛠 Технологічний стек
-- **Основа:** Vanilla HTML5, CSS3, JavaScript (ES6+).
-- **Дизайн:** Власна CSS-система з використанням CSS Variables та шрифту *Plus Jakarta Sans*.
-- **Бібліотеки (через CDN):**
-  - [SheetJS (xlsx.js)](https://sheetjs.com/) — для парсингу XLSX файлів.
-  - [Chart.js](https://www.chartjs.org/) — для побудови інтерактивних графіків.
-- **Збереження даних:** `localStorage` для налаштувань тарифів.
-
-## 📂 Структура та компоненти
-
-### 1. ⚙️ Розумний Конвертер (`converter.html`)
-Дозволяє швидко перетворити важкі `.xlsx` звіти НСЗУ у формат `.json`.
-- Підтримка Drag-and-drop.
-- Автоматична конвертація всіх листів книги Excel.
-- Генерація JSON-файлу для завантаження.
-
-### 2. 📊 Дашборд Аналітики (`index.html`)
-Основна SPA-панель (Single Page Application) для аналізу отриманих даних.
-- **Загальний огляд:** Ключові показники успішності та тренди.
-- **Аудит помилок:** Детальний аналіз причин відхилення записів.
-- **Фінансовий вплив:** Розрахунок зароблених та втрачених коштів.
-- **Аналіз по лікарях:** Рейтинги за доходом та навантаженням.
-- **Портрет пацієнта:** Демографічні дані (діти 0-17 років).
-- **Реєстр записів:** Таблиця з пагінацією та підказками.
+**НСЗУ: Аналітика та Аудит** — це потужний набір веб-інструментів для обробки, конвертації та глибокого візуального аналізу медичних звітів Національної служби здоров'я України (НСЗУ). Проєкт створений для того, щоб перетворити "сухі" таблиці на зрозумілі дані, допомагаючи медичним закладам ефективно управляти фінансами та якістю послуг.
 
 ---
-**Автор:** Тимур Галас ([BrownyOFF](https://github.com/BrownyOFF))
+
+## 📌 Основні можливості
+
+- **⚙️ Розумний Конвертер (`converter.html`):** Швидке перетворення об'ємних `.xlsx` звітів у легкий `.json` формат без втрати даних.
+- **📊 Інтерактивний Дашборд (`index.html`):** Візуалізація ключових метрик, аудит помилок та фінансовий аналіз.
+- **🛡️ Повна конфіденційність:** Усі обчислення виконуються на вашому комп'ютері (Client-side). Жодні дані пацієнтів не передаються на сервери.
+- **💰 Фінансовий контроль:** Автоматичний розрахунок зароблених та втрачених коштів на основі гнучкої системи тарифів.
+- **👨‍⚕️ Аналітика по персоналу:** Рейтинги лікарів за доходом, кількістю помилок та завантаженістю.
+
+---
+
+## 🚀 Швидкий старт
+
+Для коректної роботи локальних скриптів та переходів між сторінками використовується вбудований Python-сервер.
+
+### Запуск системи:
+1. Переконайтеся, що у вас встановлено **Python 3**.
+2. Запустіть файл відповідно до вашої ОС:
+   - **Windows:** Відкрийте `start.bat`
+   - **Linux/macOS:** Запустіть `sh start.sh`
+3. Браузер автоматично відкриє головну сторінку (`main.html`).
+
+---
+
+## 🛠 Технологічний стек
+
+Проєкт побудований на сучасних веб-технологіях без використання складних фреймворків, що забезпечує максимальну швидкість роботи:
+
+- **Frontend:** Vanilla JS (ES6+), HTML5, CSS3.
+- **Дизайн:** Власна дизайн-система на CSS Variables (шрифт Plus Jakarta Sans).
+- **Обробка даних:** [SheetJS (xlsx.js)](https://sheetjs.com/) — парсинг Excel.
+- **Візуалізація:** [Chart.js](https://www.chartjs.org/) — інтерактивні графіки.
+- **Збереження:** `localStorage` для персональних налаштувань тарифів.
+
+---
+
+## 📂 Модулі системи
+
+### 1. Конвертер (Smart Converter)
+- Підтримка Drag-and-drop для завантаження файлів.
+- Автоматичний пошук потрібних колонок (ID, дати, лікарі тощо).
+- Конвертація всіх листів Excel-файлу в один JSON.
+
+### 2. Дашборд (Analytics Dashboard)
+- **Загальний огляд:** Метрики успішності та динаміка подачі звітів.
+- **Аудит помилок:** Глибокий аналіз причин відхилення записів (парсинг JSON-деталей від НСЗУ).
+- **Фінансовий вплив:** Розрахунок потенційного доходу.
+- **Портрет пацієнта:** Віковий та статевий розподіл.
+- **Реєстр записів:** Зручна таблиця з пошуком та розшифровкою кодів помилок.
+
+---
+
+## 📋 Системні вимоги
+
+- Сучасний веб-браузер (Chrome, Firefox, Edge, Safari).
+- Python 3.x (для локального серверу).
+
+---
+
+**Автор:** [Тимур Галас](https://github.com/BrownyOFF)
