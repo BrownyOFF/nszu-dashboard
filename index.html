@@ -22,13 +22,27 @@
             --radius-2xl: 32px;
             --radius-xl: 20px;
             --shadow: 0 4px 20px -2px rgba(0,0,0,0.04);
+            --sidebar: #ffffff;
+            --topbar: rgba(255,255,255,0.8);
+        }
+
+        [data-theme="dark"] {
+            --bg: #0b0f1a;
+            --card: #151b2d;
+            --sidebar: #111827;
+            --topbar: rgba(17, 24, 39, 0.8);
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #1e293b;
+            --primary-bg: rgba(99, 102, 241, 0.15);
+            --shadow: 0 10px 30px -5px rgba(0,0,0,0.3);
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', sans-serif; -webkit-font-smoothing: antialiased; }
-        body { background-color: var(--bg); color: var(--text-main); display: flex; height: 100vh; overflow: hidden; }
+        body { background-color: var(--bg); color: var(--text-main); display: flex; height: 100vh; overflow: hidden; transition: background 0.3s, color 0.3s; }
 
         /* Sidebar */
-        aside { width: 300px; background: white; border-right: 1px solid var(--border); display: flex; flex-direction: column; z-index: 100; }
+        aside { width: 300px; background: var(--sidebar); border-right: 1px solid var(--border); display: flex; flex-direction: column; z-index: 100; transition: 0.3s; }
         .aside-header { padding: 40px 24px; }
         .logo { font-size: 1.2rem; font-weight: 800; letter-spacing: -1px; display: flex; align-items: center; gap: 12px; }
         .logo-icon { width: 32px; height: 32px; background: var(--primary); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; }
@@ -39,16 +53,16 @@
         .nav-item.active { background: var(--primary-bg); color: var(--primary); }
         
         .upload-section { padding: 24px; border-top: 1px solid var(--border); }
-        .btn-upload { width: 100%; padding: 16px; border: 2px dashed var(--border); border-radius: 16px; background: #fafafa; cursor: pointer; text-align: center; font-weight: 700; transition: 0.2s; }
+        .btn-upload { width: 100%; padding: 16px; border: 2px dashed var(--border); border-radius: 16px; background: var(--bg); color: var(--text-main); cursor: pointer; text-align: center; font-weight: 700; transition: 0.2s; }
         .btn-upload:hover { border-color: var(--primary); background: var(--primary-bg); }
 
         /* Main Content */
-        main { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
-        .top-bar { padding: 16px 40px; display: flex; justify-content: space-between; align-items: center; background: rgba(255,255,255,0.7); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 50; }
+        main { flex: 1; display: flex; flex-direction: column; overflow: hidden; background: var(--bg); }
+        .top-bar { padding: 16px 40px; display: flex; justify-content: space-between; align-items: center; background: var(--topbar); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 50; transition: 0.3s; }
         .content-container { flex: 1; overflow-y: auto; padding: 40px; scroll-behavior: smooth; }
 
         .centered-upload { display: flex; flex-direction: column; align-items: center; justify-content: center; height: 60vh; text-align: center; }
-        .btn-upload-lg { padding: 40px 80px; border: 3px dashed var(--border); border-radius: var(--radius-xl); background: white; cursor: pointer; transition: 0.3s; margin-top: 32px; }
+        .btn-upload-lg { padding: 40px 80px; border: 3px dashed var(--border); border-radius: var(--radius-xl); background: var(--card); color: var(--text-main); cursor: pointer; transition: 0.3s; margin-top: 32px; }
         .btn-upload-lg:hover { border-color: var(--primary); background: var(--primary-bg); transform: translateY(-4px); }
 
         .filter-badge { background: var(--primary-bg); color: var(--primary); padding: 4px 12px; border-radius: 8px; font-size: 0.7rem; font-weight: 700; display: flex; align-items: center; gap: 8px; border: 1px solid rgba(99,102,241,0.1); }
@@ -57,41 +71,50 @@
 
         /* Cards & Grids */
         .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-bottom: 32px; }
-        .stat-card { background: white; padding: 32px; border-radius: var(--radius-xl); box-shadow: var(--shadow); border: 1px solid #f8fafc; }
+        .stat-card { background: var(--card); padding: 32px; border-radius: var(--radius-xl); box-shadow: var(--shadow); border: 1px solid var(--border); transition: 0.3s; }
         .stat-card .label { color: var(--text-muted); font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 12px; }
         .stat-card .val { font-size: 2.2rem; font-weight: 800; letter-spacing: -1.5px; }
 
         .grid-layout { display: grid; grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); gap: 24px; margin-bottom: 32px; }
-        .card { background: white; padding: 32px; border-radius: var(--radius-xl); box-shadow: var(--shadow); border: 1px solid #f8fafc; }
+        .card { background: var(--card); padding: 32px; border-radius: var(--radius-xl); box-shadow: var(--shadow); border: 1px solid var(--border); transition: 0.3s; }
         .card-h { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 24px; }
         .card-t { font-size: 1.1rem; font-weight: 700; color: var(--text-main); }
 
         /* Table Style */
         .modern-table { width: 100%; border-collapse: collapse; }
         .modern-table th { text-align: left; padding: 16px 20px; font-size: 0.75rem; font-weight: 800; color: var(--text-muted); text-transform: uppercase; border-bottom: 1px solid var(--border); }
-        .modern-table td { padding: 16px 20px; border-bottom: 1px solid var(--border); font-size: 0.9rem; }
-        .modern-table tr:hover { background: #fbfcfe; }
+        .modern-table td { padding: 16px 20px; border-bottom: 1px solid var(--border); font-size: 0.9rem; color: var(--text-main); }
+        .modern-table tr:hover { background: var(--primary-bg); }
 
         .chip { padding: 6px 12px; border-radius: 10px; font-size: 0.75rem; font-weight: 700; }
         .chip-success { background: #dcfce7; color: #15803d; }
+        [data-theme="dark"] .chip-success { background: rgba(16, 185, 129, 0.2); color: #34d399; }
         .chip-danger { background: #fee2e2; color: #b91c1c; }
+        [data-theme="dark"] .chip-danger { background: rgba(244, 63, 94, 0.2); color: #fb7185; }
 
         .tab-content { display: none; }
         .tab-content.active { display: block; animation: fadeIn 0.3s ease; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-        #loading-screen { position: absolute; inset: 0; background: white; z-index: 1000; display: none; flex-direction: column; align-items: center; justify-content: center; }
+        #loading-screen { position: absolute; inset: 0; background: var(--bg); z-index: 1000; display: none; flex-direction: column; align-items: center; justify-content: center; }
         .hidden { display: none; }
         
-        footer { padding: 12px 40px; border-top: 1px solid var(--border); background: white; text-align: right; }
+        footer { padding: 12px 40px; border-top: 1px solid var(--border); background: var(--sidebar); text-align: right; }
         .watermark { font-size: 0.7rem; color: var(--text-muted); font-weight: 600; }
         .watermark a { color: var(--primary); text-decoration: none; }
         .watermark a:hover { text-decoration: underline; }
         
         /* Utils */
-        .btn-action { padding: 8px 16px; border-radius: 8px; border: 1px solid var(--border); background: white; cursor: pointer; font-size: 0.75rem; font-weight: 700; }
-        .reason-item { padding: 12px; border-radius: 12px; background: #fff5f5; border-left: 4px solid var(--danger); cursor: pointer; margin-bottom: 8px; }
-        .btn-p { width: 40px; height: 40px; border-radius: 10px; border: 1px solid var(--border); background: white; cursor: pointer; }
+        .btn-action { padding: 8px 16px; border-radius: 8px; border: 1px solid var(--border); background: var(--card); color: var(--text-main); cursor: pointer; font-size: 0.75rem; font-weight: 700; transition: 0.2s; }
+        .btn-action:hover { background: var(--bg); }
+        .reason-item { padding: 12px; border-radius: 12px; background: var(--primary-bg); border-left: 4px solid var(--danger); cursor: pointer; margin-bottom: 8px; color: var(--text-main); }
+        .btn-p { width: 40px; height: 40px; border-radius: 10px; border: 1px solid var(--border); background: var(--card); color: var(--text-main); cursor: pointer; }
+        
+        select, input { background: var(--card); color: var(--text-main); border: 1px solid var(--border); }
+        
+        /* Theme Toggle */
+        .theme-toggle { width: 40px; height: 40px; border-radius: 12px; border: 1px solid var(--border); background: var(--card); cursor: pointer; display: flex; align-items: center; justify-content: center; color: var(--text-main); transition: 0.2s; }
+        .theme-toggle:hover { background: var(--primary-bg); color: var(--primary); }
     </style>
 </head>
 <body>
@@ -115,14 +138,16 @@
 
     <div class="nav-menu" id="main-nav">
         <a href="./main.html" class="nav-item" style="text-decoration: none; background: var(--bg); color: var(--text-main); margin-bottom: 12px; border: 1px solid var(--border);">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
             На головну
         </a>
         <div class="nav-item active" data-tab="overview">🏠 Загальний огляд</div>
         <div class="nav-item" data-tab="audit">🚨 Аудит помилок</div>
+        <div class="nav-item" data-tab="clinical">🧬 Клінічний аналіз</div>
         <div class="nav-item" data-tab="finance">💰 Фінансовий вплив</div>
         <div class="nav-item" data-tab="staff">👨‍⚕️ Аналіз по лікарях</div>
         <div class="nav-item" data-tab="patients">👶 Портрет пацієнта</div>
+        <div class="nav-item" data-tab="dynamics">📅 Динаміка та Навантаження</div>
         <div class="nav-item" data-tab="raw">📄 Реєстр записів</div>
         <div class="nav-item" data-tab="settings">⚙️ Налаштування</div>
     </div>
@@ -142,7 +167,10 @@
 
     <div class="top-bar">
         <div>
-            <div id="org-info" style="font-size: 0.65rem; color: var(--text-muted); font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 4px; display: none;"></div>
+            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px;">
+                <div id="org-info" style="font-size: 0.65rem; color: var(--text-muted); font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; display: none;"></div>
+                <div id="report-period" style="font-size: 0.65rem; background: var(--primary); color: white; padding: 2px 8px; border-radius: 6px; font-weight: 800; text-transform: uppercase; display: none;"></div>
+            </div>
             <h2 id="current-tab-title">Загальний огляд</h2>
             <div style="display: flex; align-items: center; gap: 12px; margin-top: 4px;">
                 <p id="data-status" style="font-size: 0.7rem; color: var(--text-muted);">Дані не завантажено</p>
@@ -150,14 +178,17 @@
             </div>
         </div>
         <div style="display: flex; gap: 12px; align-items: center;">
-            <select id="packageFilter" style="width: 180px; padding: 10px 14px; border-radius: 12px; border: 1px solid var(--border); font-size: 0.8rem; outline: none; background: white; cursor: pointer;">
+            <button class="theme-toggle" id="themeToggle" title="Переключити тему">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="sun-icon"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+            </button>
+            <select id="packageFilter" style="width: 180px; padding: 10px 14px; border-radius: 12px; border: 1px solid var(--border); font-size: 0.8rem; outline: none; cursor: pointer;">
                 <option value="">Всі пакети</option>
             </select>
             <div style="position: relative;">
                 <input type="text" id="globalSearch" placeholder="Пошук..." style="width: 220px; padding: 10px 16px 10px 40px; border-radius: 12px; border: 1px solid var(--border); font-size: 0.8rem; outline: none;">
                 <svg style="position: absolute; left: 14px; top: 50%; transform: translateY(-50%); color: var(--text-muted);" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
             </div>
-            <button id="resetAllBtn" class="btn-action" style="display: none; background: var(--danger); color: white; border: none; padding: 10px 16px; border-radius: 12px; display: none; align-items: center; gap: 8px;" onclick="resetFilter()">
+            <button id="resetAllBtn" class="btn-action" style="display: none; background: var(--danger); color: white; border: none; padding: 10px 16px; border-radius: 12px; align-items: center; gap: 8px;" onclick="resetFilter()">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
                 Скинути
             </button>
@@ -197,13 +228,37 @@
 
             <!-- AUDIT -->
             <div id="tab-audit" class="tab-content">
-                <div class="card" style="margin-bottom: 24px;">
-                    <h3 class="card-t">Критичні помилки (Натисніть для перегляду)</h3>
-                    <div style="height: 400px;"><canvas id="chart-errors-bar"></canvas></div>
+                <div class="grid-layout">
+                    <div class="card">
+                        <h3 class="card-t">Критичні помилки (Частота)</h3>
+                        <div style="height: 350px;"><canvas id="chart-errors-bar"></canvas></div>
+                    </div>
+                    <div class="card">
+                        <h3 class="card-t">Діаграма Парето (Фінансові втрати)</h3>
+                        <div style="height: 350px;"><canvas id="chart-pareto-errors"></canvas></div>
+                    </div>
                 </div>
                 <div id="audit-details-container" class="grid-layout">
                     <div class="card"><h3 class="card-t">Специфічні причини НСЗУ</h3><div id="audit-reason-list"></div></div>
                     <div class="card"><h3 class="card-t">Ризикові пакети</h3><div id="audit-package-list"></div></div>
+                </div>
+            </div>
+
+            <!-- CLINICAL -->
+            <div id="tab-clinical" class="tab-content">
+                <div class="grid-layout">
+                    <div class="card">
+                        <h3 class="card-t">Топ діагнозів за доходом (₴)</h3>
+                        <div style="height: 350px;"><canvas id="chart-diag-income"></canvas></div>
+                    </div>
+                    <div class="card">
+                        <h3 class="card-t">Діагнози з найбільшим % помилок</h3>
+                        <div style="height: 350px;"><canvas id="chart-diag-risk"></canvas></div>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3 class="card-t">Розподіл за класами МКХ-10</h3>
+                    <div style="height: 400px;"><canvas id="chart-icd-classes"></canvas></div>
                 </div>
             </div>
 
@@ -256,6 +311,11 @@
 
             <!-- PATIENTS -->
             <div id="tab-patients" class="tab-content">
+                <div class="stats-grid" style="grid-template-columns: repeat(3, 1fr);">
+                    <div class="stat-card"><p class="label">Всього пацієнтів</p><h2 class="val" id="pat-total">0</h2></div>
+                    <div class="stat-card"><p class="label">Повторні візити (%)</p><h2 class="val" style="color: var(--primary)" id="pat-repeat">0%</h2></div>
+                    <div class="stat-card"><p class="label">Послуг на пацієнта</p><h2 class="val" id="pat-avg">0.0</h2></div>
+                </div>
                 <div class="card">
                     <h3 class="card-t">Віковий розподіл пацієнтів (0-17)</h3>
                     <div style="height: 400px;"><canvas id="chart-age-dist"></canvas></div>
@@ -270,11 +330,45 @@
                 </div>
             </div>
 
+            <!-- DYNAMICS -->
+            <div id="tab-dynamics" class="tab-content">
+                <div class="card" style="margin-bottom: 24px;">
+                    <div class="card-h">
+                        <h3 class="card-t">Heatmap: Навантаження по днях та годинах</h3>
+                    </div>
+                    <div id="heatmap-container" style="height: 300px; display: flex; flex-direction: column; gap: 4px; padding: 20px;">
+                        <!-- JS generated heatmap -->
+                    </div>
+                </div>
+                <div class="grid-layout">
+                    <div class="card">
+                        <div class="card-h" style="flex-direction: column; gap: 12px; align-items: stretch;">
+                            <h3 class="card-t">Порівняння періодів</h3>
+                            <div style="display: flex; gap: 8px;">
+                                <select id="comp-base" class="btn-action" style="flex: 1; text-align: left;" onchange="renderTab('dynamics')"></select>
+                                <select id="comp-target" class="btn-action" style="flex: 1; text-align: left;" onchange="renderTab('dynamics')"></select>
+                            </div>
+                        </div>
+                        <div id="period-comparison" class="stats-grid" style="grid-template-columns: 1fr 1fr; margin-top: 20px; gap: 12px;">
+                            <!-- Dynamic comparison -->
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h3 class="card-t">Інтенсивність за годинами доби</h3>
+                        <div style="height: 300px;"><canvas id="chart-hourly-load"></canvas></div>
+                    </div>
+                </div>
+            </div>
+
             <!-- RAW -->
             <div id="tab-raw" class="tab-content">
                 <div class="card" style="padding: 0; overflow: hidden;">
-                    <div style="padding: 16px 24px; background: #fbfcfe; border-bottom: 1px solid var(--border);">
+                    <div style="padding: 16px 24px; background: var(--bg); border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center;">
                         <span id="raw-title" style="font-weight: 700;">Реєстр записів</span>
+                        <button class="btn-action" onclick="exportData()" style="display: flex; align-items: center; gap: 8px; background: var(--success); color: white; border: none;">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                            Експорт CSV
+                        </button>
                     </div>
                     <table class="modern-table">
                         <thead><tr><th>ID ЕМЗ</th><th>Дата</th><th>Лікар</th><th>Послуга / Пакет</th><th>Статус</th></tr></thead>
@@ -309,6 +403,59 @@
     const PATIENT_MAP = { id: '', age: '', diag: '', diagSec: '' };
     const ERROR_MAP = { code: '', desc: '' };
 
+    function getICDClass(code) {
+        if (!code) return "Інше";
+        const c = code.trim().toUpperCase().charAt(0);
+        if (c === 'A' || c === 'B') return "I. Інфекційні та паразитарні";
+        if (c === 'C' || (c === 'D' && parseInt(code.substring(1,3)) <= 48)) return "II. Новоутворення";
+        if (c === 'D' && parseInt(code.substring(1,3)) >= 50) return "III. Хвороби крові";
+        if (c === 'E') return "IV. Ендокринні хвороби";
+        if (c === 'F') return "V. Розлади психіки";
+        if (c === 'G') return "VI. Хвороби нервової системи";
+        if (c === 'H' && parseInt(code.substring(1,3)) <= 59) return "VII. Хвороби ока";
+        if (c === 'H' && parseInt(code.substring(1,3)) >= 60) return "VIII. Хвороби вуха";
+        if (c === 'I') return "IX. Хвороби системи кровообігу";
+        if (c === 'J') return "X. Хвороби системи дихання";
+        if (c === 'K') return "XI. Хвороби органів травлення";
+        if (c === 'L') return "XII. Хвороби шкіри";
+        if (c === 'M') return "XIII. Хвороби кістково-м'язової системи";
+        if (c === 'N') return "XIV. Хвороби сечостатевої системи";
+        if (c === 'O') return "XV. Вагітність та пологи";
+        if (c === 'P') return "XVI. Окремі стани перинатального періоду";
+        if (c === 'Q') return "XVII. Вроджені аномалії";
+        if (c === 'R') return "XVIII. Симптоми та відхилення";
+        if (c === 'S' || c === 'T') return "XIX. Травми та отруєння";
+        return "Інші класи";
+    }
+
+    function exportData() {
+        if (!filteredData.length) return;
+        const headers = ["ID ЕМЗ", "Дата", "Лікар", "Пакет", "Статус", "Помилка", "Пацієнт", "Вік", "Діагноз", "Супутні", "Ціна"];
+        const rows = filteredData.map(r => {
+            const isOk = String(r[MAP.isReport]).trim() === "Так";
+            const info = getPatientInfo(r[MAP.patientId]);
+            return [
+                r[MAP.id],
+                formatDate(r[MAP.date]),
+                r[MAP.doctor],
+                r[MAP.pkg],
+                isOk ? "OK" : "Помилка",
+                r[MAP.error],
+                r[MAP.patientId],
+                info.age || r[MAP.age],
+                info.diag || r[MAP.diag],
+                info.diagSec || r[MAP.diagSec],
+                getPrice(r[MAP.pkg])
+            ].map(v => `"${String(v || "").replace(/"/g, '""')}"`).join(",");
+        });
+        const csv = "\uFEFF" + headers.join(",") + "\n" + rows.join("\n");
+        const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+        const link = document.createElement("a");
+        link.href = URL.createObjectURL(blob);
+        link.download = `nszu_export_${new Date().toISOString().slice(0,10)}.csv`;
+        link.click();
+    }
+
     // Pricing System
     const DEFAULT_RATES = { 'default': 450, '9': 1200, '4': 800 };
     let packagePrices = JSON.parse(localStorage.getItem('nszu_prices') || '{}');
@@ -334,6 +481,7 @@
     }
 
     const UI = {
+        themeToggle: document.getElementById('themeToggle'),
         file: document.getElementById('fileInput'),
         loading: document.getElementById('loading-screen'),
         welcome: document.getElementById('empty-state'),
@@ -345,8 +493,57 @@
         status: document.getElementById('data-status'),
         activeFilters: document.getElementById('active-filters'),
         resetBtn: document.getElementById('resetAllBtn'),
-        org: document.getElementById('org-info')
+        org: document.getElementById('org-info'),
+        period: document.getElementById('report-period'),
+        compBase: document.getElementById('comp-base'),
+        compTarget: document.getElementById('comp-target')
     };
+
+    // History System
+    let historicalData = JSON.parse(localStorage.getItem('nszu_history') || '{}');
+    function saveToHistory(periods) {
+        Object.assign(historicalData, periods);
+        localStorage.setItem('nszu_history', JSON.stringify(historicalData));
+    }
+
+    // Theme System
+    const currentTheme = localStorage.getItem('nszu_theme') || 'light';
+    if (currentTheme === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+
+    UI.themeToggle.onclick = () => {
+        const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+        const newTheme = isDark ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', newTheme);
+        localStorage.setItem('nszu_theme', newTheme);
+        
+        updateChartDefaults(newTheme);
+        const activeTab = document.querySelector('.nav-item.active').getAttribute('data-tab');
+        renderTab(activeTab);
+    };
+
+    function updateChartDefaults(theme) {
+        if (typeof Chart === 'undefined') return;
+        const isDark = theme === 'dark';
+        Chart.defaults.color = isDark ? '#94a3b8' : '#64748b';
+        if (!Chart.defaults.scales) Chart.defaults.scales = {};
+        if (!Chart.defaults.scales.linear) Chart.defaults.scales.linear = { grid: {} };
+        if (!Chart.defaults.scales.linear.grid) Chart.defaults.scales.linear.grid = {};
+        Chart.defaults.scales.linear.grid.color = isDark ? '#1e293b' : '#f1f5f9';
+    }
+    try { updateChartDefaults(currentTheme); } catch(e) { console.error("Chart defaults error:", e); }
+
+    function getReportPeriod(data) {
+        if (!data || !data.length) return "";
+        const counts = {};
+        data.forEach(r => {
+            const d = new Date(r[MAP.date]);
+            if (isNaN(d)) return;
+            const key = d.toLocaleDateString('uk-UA', { month: 'long', year: 'numeric' });
+            counts[key] = (counts[key] || 0) + 1;
+        });
+        const sorted = Object.entries(counts).sort((a, b) => b[1] - a[1]);
+        return sorted.length ? sorted[0][0] : "";
+    }
 
     // Navigation
     UI.navItems.forEach(item => {
@@ -365,6 +562,9 @@
         const file = e.target.files[0];
         if (!file) return;
         UI.loading.style.display = 'flex';
+        UI.period.style.display = 'none';
+        UI.compBase.innerHTML = "";
+        UI.compTarget.innerHTML = "";
         const reader = new FileReader();
         reader.onload = (ev) => {
             try {
@@ -431,9 +631,7 @@
                         const eKeys = Array.isArray(eHeaderRow) ? eHeaderRow.keys() : Object.keys(eHeaderRow);
                         for (let key of eKeys) {
                             const v = String(eHeaderRow[key]).toLowerCase().trim();
-                            // Identify key column (code or short text)
                             if (v.includes("код") || (v.includes("текст") && !v.includes("опис"))) ERROR_MAP.code = key;
-                            // Identify description column
                             if (v.includes("опис") || v.includes("значення")) ERROR_MAP.desc = key;
                         }
                         eSheet.slice(eHeaderIdx + 1).forEach(r => {
@@ -470,6 +668,13 @@
                 }
 
                 allData = data.slice(headerIdx + 1).filter(r => r && r[MAP.id] && String(r[MAP.id]).length > 10);
+                
+                const period = getReportPeriod(allData);
+                if (period) {
+                    UI.period.textContent = period;
+                    UI.period.style.display = 'block';
+                }
+
                 const pkgs = [...new Set(allData.map(r => String(r[MAP.pkg] || "Інше")).filter(p => p !== "-"))].sort();
                 UI.pkgFilter.innerHTML = '<option value="">Всі пакети</option>' + pkgs.map(p => `<option value="${p}">${p}</option>`).join('');
                 UI.pkgFilter.value = "";
@@ -505,8 +710,11 @@
         if (query) UI.activeFilters.innerHTML += `<div class="filter-badge">Пошук: ${query} <span class="close" onclick="clearFilter('search')">×</span></div>`;
         UI.resetBtn.style.display = (pkg || query) ? 'flex' : 'none';
         currentPage = 1;
-        const activeTab = document.querySelector('.nav-item.active').getAttribute('data-tab');
-        renderTab(activeTab);
+        const activeNav = document.querySelector('.nav-item.active');
+        if (activeNav) {
+            const activeTab = activeNav.getAttribute('data-tab');
+            renderTab(activeTab);
+        }
     }
 
     window.clearFilter = (type) => { if (type === 'pkg') UI.pkgFilter.value = ""; if (type === 'search') UI.search.value = ""; applyFilters(); };
@@ -514,6 +722,7 @@
     UI.pkgFilter.onchange = applyFilters;
 
     function renderTab(id) {
+        if (!allData.length) return;
         if (id === 'overview') {
             const ok = filteredData.filter(r => String(r[MAP.isReport]).trim() === "Так").length;
             document.getElementById('ov-total').textContent = filteredData.length.toLocaleString();
@@ -529,11 +738,13 @@
         }
 
         if (id === 'audit') {
-            const errors = {}; const reasons = {}; const pkgs = {};
+            const errors = {}; const reasons = {}; const pkgs = {}; const errorLoss = {};
             filteredData.forEach(r => {
                 if (String(r[MAP.isReport]).trim() !== "Так") {
                     const e = String(r[MAP.error] || "Невідомо").split(';')[0].substring(0, 60);
                     errors[e] = (errors[e] || 0) + 1;
+                    const price = getPrice(r[MAP.pkg]);
+                    errorLoss[e] = (errorLoss[e] || 0) + price;
                     const p = String(r[MAP.pkg] || "Без пакету"); pkgs[p] = (pkgs[p] || 0) + 1;
                     const det = String(r[MAP.details] || "");
                     if (det.includes('{')) {
@@ -549,15 +760,55 @@
             });
             const top = Object.entries(errors).sort((a,b) => b[1]-a[1]).slice(0, 10);
             updateChart('chart-errors-bar', 'bar', { labels: top.map(e => e[0]), datasets: [{ label: 'Випадків', data: top.map(e => e[1]), backgroundColor: '#f43f5e' }] }, { indexAxis: 'y', onClick: (e, el) => el.length && showFiltered('error', top[el[0].index][0]) });
+            
+            const sortedLoss = Object.entries(errorLoss).sort((a,b) => b[1]-a[1]);
+            const totalLoss = sortedLoss.reduce((sum, e) => sum + e[1], 0);
+            let cumulative = 0;
+            const paretoData = sortedLoss.slice(0, 10).map(e => {
+                cumulative += e[1];
+                return { label: e[0], val: e[1], percent: Math.round((cumulative / totalLoss) * 100) };
+            });
+
+            updateChart('chart-pareto-errors', 'bar', { 
+                labels: paretoData.map(d => d.label.substring(0, 20) + '...'), 
+                datasets: [
+                    { label: 'Втрати (₴)', data: paretoData.map(d => d.val), backgroundColor: '#6366f1', yAxisID: 'y' },
+                    { label: '% Кумулятивно', data: paretoData.map(d => d.percent), borderColor: '#f43f5e', type: 'line', yAxisID: 'y1', tension: 0.4 }
+                ] 
+            }, { scales: { y: { type: 'linear', position: 'left' }, y1: { type: 'linear', position: 'right', min: 0, max: 100, grid: { drawOnChartArea: false } } } });
+
             document.getElementById('audit-reason-list').innerHTML = Object.entries(reasons).sort((a,b) => b[1]-a[1]).slice(0, 6).map(([t, c]) => `<div class="reason-item" onclick="showFiltered('details', '${t.replace(/'/g, "\\'")}')"><b>${c}</b> - ${t}</div>`).join('');
-            document.getElementById('audit-package-list').innerHTML = Object.entries(pkgs).sort((a,b) => b[1]-a[1]).slice(0, 6).map(([t, c]) => `<div class="reason-item" style="background:#f1f5f9; border-left-color:#6366f1" onclick="showFiltered('pkg', '${t.replace(/'/g, "\\'")}')"><b>${c}</b> - ${t}</div>`).join('');
+            document.getElementById('audit-package-list').innerHTML = Object.entries(pkgs).sort((a,b) => b[1]-a[1]).slice(0, 6).map(([t, c]) => `<div class="reason-item" style="background:var(--primary-bg); border-left-color:var(--primary)" onclick="showFiltered('pkg', '${t.replace(/'/g, "\\'")}')"><b>${c}</b> - ${t}</div>`).join('');
+        }
+
+        if (id === 'clinical') {
+            const diagInc = {}; const diagRisk = {}; const icdClasses = {};
+            filteredData.forEach(r => {
+                const info = getPatientInfo(r[MAP.patientId]);
+                const d = String(info.diag || r[MAP.diag] || "Невідомо").trim().replace(/^ICD10[:\s]*/i, '');
+                if (d === "-" || !d) return;
+                const price = getPrice(r[MAP.pkg]);
+                const isOk = String(r[MAP.isReport]).trim() === "Так";
+                if (isOk) diagInc[d] = (diagInc[d] || 0) + price;
+                if (!diagRisk[d]) diagRisk[d] = { total: 0, err: 0 };
+                diagRisk[d].total++;
+                if (!isOk) diagRisk[d].err++;
+                const icdClass = getICDClass(d);
+                icdClasses[icdClass] = (icdClasses[icdClass] || 0) + (isOk ? price : 0);
+            });
+            const topInc = Object.entries(diagInc).sort((a,b) => b[1]-a[1]).slice(0, 10);
+            updateChart('chart-diag-income', 'bar', { labels: topInc.map(e => e[0].substring(0, 20)), datasets: [{ label: 'Дохід (₴)', data: topInc.map(e => e[1]), backgroundColor: '#10b981' }] }, { onClick: (e, el) => el.length && showFiltered('search', topInc[el[0].index][0]) });
+            const topRisk = Object.entries(diagRisk).filter(e => e[1].total > 5).map(e => [e[0], Math.round((e[1].err/e[1].total)*100)]).sort((a,b) => b[1]-a[1]).slice(0, 10);
+            updateChart('chart-diag-risk', 'bar', { labels: topRisk.map(e => e[0].substring(0, 20)), datasets: [{ label: '% Помилок', data: topRisk.map(e => e[1]), backgroundColor: '#f43f5e' }] }, { onClick: (e, el) => el.length && showFiltered('search', topRisk[el[0].index][0]) });
+            const sortedClasses = Object.entries(icdClasses).sort((a,b) => b[1]-a[1]);
+            updateChart('chart-icd-classes', 'doughnut', { labels: sortedClasses.map(e => e[0]), datasets: [{ data: sortedClasses.map(e => e[1]), backgroundColor: ['#6366f1', '#10b981', '#f59e0b', '#f43f5e', '#8b5cf6', '#06b6d4', '#ec4899', '#84cc16', '#f97316', '#14b8a6'] }] }, { plugins: { legend: { position: 'right', labels: { boxWidth: 12, font: { size: 10 } } } } });
         }
 
         if (id === 'finance') {
             let inc = 0, loss = 0; const pkgData = {};
             filteredData.forEach(r => {
                 const pName = String(r[MAP.pkg] || "Інше"); const price = getPrice(pName);
-                if (String(r[MAP.isReport]).trim() === "Так") { inc += price; } else { loss += price; }
+                if (String(r[MAP.isReport]).trim() === "Так") inc += price; else loss += price;
                 if (!pkgData[pName]) pkgData[pName] = { ok: 0, err: 0 };
                 if (String(r[MAP.isReport]).trim() === "Так") pkgData[pName].ok += price; else pkgData[pName].err += price;
             });
@@ -571,46 +822,124 @@
             const staff = {};
             filteredData.forEach(r => {
                 const name = String(r[MAP.doctor] || "Невідомо").trim();
-                if (!staff[name]) staff[name] = { ok: 0, err: 0, inc: 0, loss: 0, patients: new Set() };
+                if (!staff[name]) staff[name] = { ok: 0, err: 0, inc: 0, loss: 0, patients: new Set(), diagErrors: {} };
                 const p = getPrice(r[MAP.pkg]);
-                if (String(r[MAP.isReport]).trim() === "Так") { staff[name].ok++; staff[name].inc += p; } else { staff[name].err++; staff[name].loss += p; }
+                const isReported = String(r[MAP.isReport]).trim() === "Так";
+                if (isReported) { staff[name].ok++; staff[name].inc += p; } 
+                else { 
+                    staff[name].err++; staff[name].loss += p; 
+                    const d = String(r[MAP.diag] || "Невідомо").split(' ')[0];
+                    staff[name].diagErrors[d] = (staff[name].diagErrors[d] || 0) + 1;
+                }
                 staff[name].patients.add(r[MAP.patientId]);
             });
-            const data = Object.entries(staff).map(([n, s]) => ({ name: n, total: s.ok + s.err, errs: s.err, inc: s.inc, loss: s.loss, rate: Math.round((s.ok/(s.ok+s.err))*100) || 0, patients: s.patients.size })).sort((a,b) => b.inc - a.inc);
+            const data = Object.entries(staff).map(([n, s]) => {
+                const topDiagErr = Object.entries(s.diagErrors).sort((a,b) => b[1]-a[1])[0];
+                return { name: n, total: s.ok + s.err, errs: s.err, inc: s.inc, loss: s.loss, rate: Math.round((s.ok/(s.ok+s.err))*100) || 0, patients: s.patients.size, hint: topDiagErr ? `Найчастіша помилка при діагнозі: ${topDiagErr[0]}` : "Помилок не виявлено" };
+            }).sort((a,b) => b.inc - a.inc);
             updateChart('chart-staff-income', 'bar', { labels: data.map(d => d.name), datasets: [{ label: 'Зароблено (₴)', data: data.map(d => d.inc), backgroundColor: '#6366f1' }] });
             updateChart('chart-staff-errors', 'bar', { labels: data.map(d => d.name.split(' ')[0]), datasets: [{ label: 'Кількість помилок', data: data.map(d => d.errs), backgroundColor: '#f43f5e' }] });
             const topLoad = [...data].sort((a,b) => b.total - a.total).slice(0, 10);
             updateChart('chart-staff-load', 'doughnut', { labels: topLoad.map(d => d.name), datasets: [{ data: topLoad.map(d => d.total), backgroundColor: ['#6366f1', '#818cf8', '#a5b4fc', '#c7d2fe', '#e0e7ff', '#60a5fa', '#34d399', '#fbbf24', '#f87171', '#a78bfa'] }] }, { plugins: { legend: { position: 'bottom', labels: { boxWidth: 12, font: { size: 10 } } } } });
-            document.getElementById('staff-table-body').innerHTML = data.map(s => `<tr><td><b>${s.name}</b></td><td>${s.total}</td><td style="color:var(--danger)">${s.errs}</td><td>${s.patients}</td><td style="font-weight:700">${s.rate}%</td><td style="color:var(--success)">${s.inc.toLocaleString()} ₴</td></tr>`).join('');
+            document.getElementById('staff-table-body').innerHTML = data.map(s => `<tr><td><b>${s.name}</b><br><small style="color:var(--text-muted); font-size:0.7rem;">${s.hint}</small></td><td>${s.total}</td><td style="color:var(--danger)">${s.errs}</td><td>${s.patients}</td><td style="font-weight:700">${s.rate}%</td><td style="color:var(--success)">${s.inc.toLocaleString()} ₴</td></tr>`).join('');
         }
 
         if (id === 'patients') {
             const ageSets = Array.from({ length: 18 }, () => new Set());
             const diags = {}; const diagsSec = {};
             const uniquePatients = new Set();
-
+            const patientVisits = {};
             filteredData.forEach(r => { 
-                const pid = r[MAP.patientId]; if (!pid || uniquePatients.has(pid)) return;
+                const pid = r[MAP.patientId]; if (!pid) return;
+                patientVisits[pid] = (patientVisits[pid] || 0) + 1;
+                if (uniquePatients.has(pid)) return;
                 uniquePatients.add(pid);
                 const info = getPatientInfo(pid);
-                
-                // Use Patient Sheet if available, fallback to main record
                 const age = info.age !== null ? parseInt(info.age) : parseInt(r[MAP.age]);
                 const diag = info.diag || r[MAP.diag];
                 const diagSec = info.diagSec || r[MAP.diagSec];
-
                 if(age >= 0 && age <= 17) ageSets[age].add(pid); 
                 const d = String(diag || "").trim(); if (d && d !== "-") diags[d] = (diags[d] || 0) + 1;
                 const ds = String(diagSec || "").trim();
                 if (ds && ds !== "-") { ds.split(/[;,]/).forEach(item => { const clean = item.trim(); if (clean) diagsSec[clean] = (diagsSec[clean] || 0) + 1; }); }
             });
-
+            const totalPat = uniquePatients.size || 1;
+            const repeatPat = Object.values(patientVisits).filter(v => v > 1).length;
+            document.getElementById('pat-total').textContent = totalPat.toLocaleString();
+            document.getElementById('pat-repeat').textContent = Math.round((repeatPat / totalPat) * 100) + "%";
+            document.getElementById('pat-avg').textContent = (filteredData.length / totalPat).toFixed(1);
             const counts = ageSets.map(s => s.size);
             updateChart('chart-age-dist', 'bar', { labels: counts.map((_,i) => i+' р.'), datasets: [{ label: 'Діти', data: counts, backgroundColor: '#6366f1' }] });
             const topDiags = Object.entries(diags).sort((a,b) => b[1]-a[1]).slice(0, 15);
             updateChart('chart-diag-main', 'bar', { labels: topDiags.map(e => e[0].replace(/^ICD10[:\s]*/i, '').trim().split(' ')[0]), datasets: [{ label: 'Кількість', data: topDiags.map(e => e[1]), backgroundColor: '#10b981' }] });
             const topDiagsSec = Object.entries(diagsSec).sort((a,b) => b[1]-a[1]).slice(0, 15);
-            updateChart('chart-diag-sec', 'doughnut', { labels: topDiagsSec.map(e => e[0].replace(/^ICD10[:\s]*/i, '').trim().substring(0, 30)), datasets: [{ data: topDiagsSec.map(e => e[1]), backgroundColor: ['#34d399', '#3b82f6', '#f59e0b', '#ef4444', '#8b5cf6', '#ec4899', '#06b6d4', '#84cc16', '#f97316', '#6366f1', '#a855f7', '#14b8a6', '#f43f5e', '#64748b', '#0ea5e9'] }] }, { plugins: { legend: { position: 'bottom', labels: { boxWidth: 12, font: { size: 10 } } } } });
+            updateChart('chart-diag-sec', 'doughnut', { labels: topDiagsSec.map(e => e[0].replace(/^ICD10[:\s]*/i, '').trim().substring(0, 30)), datasets: [{ data: topDiagsSec.map(e => e[1]), backgroundColor: ['#34d399', '#3b82f6', '#f59e0b', '#ef4444', '#8b5cf6', '#ec4899', '#06b6d4', '#84cc16', '#f97316', '#6366f1'] }] }, { plugins: { legend: { position: 'bottom', labels: { boxWidth: 12, font: { size: 10 } } } } });
+        }
+
+        if (id === 'dynamics') {
+            const heatmap = Array.from({ length: 7 }, () => Array(24).fill(0));
+            const hourly = Array(24).fill(0);
+            const currentPeriods = {};
+            
+            filteredData.forEach(r => {
+                const d = new Date(r[MAP.date]); if (isNaN(d)) return;
+                const day = (d.getDay() + 6) % 7; const hour = d.getHours();
+                heatmap[day][hour]++; hourly[hour]++;
+                const month = d.toISOString().slice(0, 7);
+                if (!currentPeriods[month]) currentPeriods[month] = { inc: 0, total: 0 };
+                const price = getPrice(r[MAP.pkg]);
+                if (String(r[MAP.isReport]).trim() === "Так") currentPeriods[month].inc += price;
+                currentPeriods[month].total++;
+            });
+
+            saveToHistory(currentPeriods);
+            const allPeriods = { ...historicalData, ...currentPeriods };
+            const sortedMonths = Object.keys(allPeriods).sort();
+            
+            // Update Selectors if empty
+            if (!UI.compBase.options.length && sortedMonths.length) {
+                const options = sortedMonths.map(m => `<option value="${m}">${m}</option>`).join('');
+                UI.compBase.innerHTML = options;
+                UI.compTarget.innerHTML = options;
+                UI.compTarget.value = sortedMonths[sortedMonths.length - 1];
+                UI.compBase.value = sortedMonths[sortedMonths.length - 2] || sortedMonths[0];
+            }
+
+            const days = ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Нд'];
+            const max = Math.max(...heatmap.flat()) || 1;
+            let html = '<div style="display:flex; gap:2px; margin-left:30px;">' + Array(24).fill(0).map((_,i)=>`<div style="flex:1; font-size:9px; text-align:center; color:var(--text-muted)">${i}</div>`).join('') + '</div>';
+            heatmap.forEach((row, i) => {
+                html += `<div style="display:flex; align-items:center; gap:4px;"><div style="width:25px; font-size:10px; font-weight:700; color:var(--text-muted)">${days[i]}</div>`;
+                row.forEach(val => { const alpha = val / max; html += `<div style="flex:1; height:25px; background:var(--primary); opacity:${alpha || 0.05}; border-radius:3px;" title="${val} записів"></div>`; });
+                html += '</div>';
+            });
+            document.getElementById('heatmap-container').innerHTML = html;
+            updateChart('chart-hourly-load', 'line', { labels: Array(24).fill(0).map((_,i)=>i+':00'), datasets: [{ label: 'Записи', data: hourly, borderColor: '#6366f1', backgroundColor: 'rgba(99,102,241,0.1)', fill: true }] });
+
+            const baseMonth = UI.compBase.value;
+            const targetMonth = UI.compTarget.value;
+
+            if (baseMonth && targetMonth && baseMonth !== targetMonth) {
+                const curr = allPeriods[targetMonth];
+                const prev = allPeriods[baseMonth];
+                const incDiff = curr.inc - prev.inc;
+                const totalDiff = curr.total - prev.total;
+                document.getElementById('period-comparison').innerHTML = `
+                    <div class="stat-card" style="padding:16px;">
+                        <p class="label">Дохід (${targetMonth})</p>
+                        <div class="val" style="font-size:1.2rem;">${curr.inc.toLocaleString()} ₴</div>
+                        <div style="font-size:0.75rem; color:${incDiff>=0?'var(--success)':'var(--danger)'}">${incDiff>=0?'+':''}${incDiff.toLocaleString()} ₴ vs ${baseMonth}</div>
+                    </div>
+                    <div class="stat-card" style="padding:16px;">
+                        <p class="label">Записи</p>
+                        <div class="val" style="font-size:1.2rem;">${curr.total.toLocaleString()}</div>
+                        <div style="font-size:0.75rem; color:${totalDiff>=0?'var(--success)':'var(--danger)'}">${totalDiff>=0?'+':''}${totalDiff.toLocaleString()} vs ${baseMonth}</div>
+                    </div>`;
+            } else if (baseMonth === targetMonth) {
+                document.getElementById('period-comparison').innerHTML = '<p style="color:var(--text-muted); font-size:0.8rem; grid-column: span 2; text-align:center;">Оберіть різні місяці для порівняння</p>';
+            } else {
+                document.getElementById('period-comparison').innerHTML = '<p style="color:var(--text-muted); font-size:0.8rem; grid-column: span 2; text-align:center;">Недостатньо даних для порівняння</p>';
+            }
         }
         if (id === 'raw') renderRaw();
     }
@@ -621,40 +950,21 @@
             const isOk = String(r[MAP.isReport]).trim() === 'Так';
             const errVal = String(r[MAP.error] || "");
             let tooltip = errVal;
-
             if (!isOk && errVal) {
-                // 1. Try numerical match (e.g. 5021)
                 const numMatch = errVal.match(/\d+/);
-                if (numMatch && errorDescriptions[numMatch[0]]) {
-                    tooltip = errorDescriptions[numMatch[0]];
-                } else {
-                    // 2. Try partial text match (find if any key from errorDescriptions is inside errVal)
-                    const foundKey = Object.keys(errorDescriptions).find(k => k.length > 5 && errVal.toLowerCase().includes(k.toLowerCase()));
-                    if (foundKey) tooltip = errorDescriptions[foundKey];
-                }
+                if (numMatch && errorDescriptions[numMatch[0]]) tooltip = errorDescriptions[numMatch[0]];
+                else { const foundKey = Object.keys(errorDescriptions).find(k => k.length > 5 && errVal.toLowerCase().includes(k.toLowerCase())); if (foundKey) tooltip = errorDescriptions[foundKey]; }
             }
-
-            return `
-                <tr>
-                    <td><small style="color:var(--text-muted)">${r[MAP.id]}</small></td>
-                    <td>${formatDate(r[MAP.date])}</td>
-                    <td><b>${r[MAP.doctor]}</b></td>
-                    <td><small>${String(r[MAP.pkg] || "Інше")}</small></td>
-                    <td><span class="chip ${isOk?'chip-success':'chip-danger'}" title="${isOk?'':tooltip.replace(/"/g, '&quot;')}">${isOk?'OK':errVal}</span></td>
-                </tr>
-            `;
+            return `<tr><td><small style="color:var(--text-muted)">${r[MAP.id]}</small></td><td>${formatDate(r[MAP.date])}</td><td><b>${r[MAP.doctor]}</b></td><td><small>${String(r[MAP.pkg] || "Інше")}</small></td><td><span class="chip ${isOk?'chip-success':'chip-danger'}" title="${isOk?'':tooltip.replace(/"/g, '&quot;')}">${isOk?'OK':errVal}</span></td></tr>`;
         }).join('');
         const total = Math.ceil(filteredData.length / 15) || 1;
-        document.getElementById('pagination').innerHTML = `<button class="btn-p" onclick="changePage(${currentPage-1})" ${currentPage===1?'disabled':''}>‹</button><span>${currentPage}/${total}</span><button class="btn-p" onclick="changePage(${currentPage+1})" ${currentPage===total?'disabled':''}>›</button>`;
+        document.getElementById('pagination').innerHTML = `<button class="btn-p" onclick="changePage(${currentPage-1})" ${currentPage===1?'disabled':''}>‹</button><span style="color:var(--text-main)">${currentPage}/${total}</span><button class="btn-p" onclick="changePage(${currentPage+1})" ${currentPage===total?'disabled':''}>›</button>`;
     }
 
     window.changePage = (p) => { currentPage = p; renderRaw(); };
-    window.showFiltered = (f, v) => {
-        if (f === 'pkg') { UI.pkgFilter.value = v; applyFilters(); } 
-        else { UI.search.value = v; applyFilters(); document.getElementById('raw-title').textContent = `Фільтр: ${v.substring(0, 30)}...`; document.querySelector('[data-tab="raw"]').click(); }
-    };
+    window.showFiltered = (f, v) => { if (f === 'pkg') { UI.pkgFilter.value = v; applyFilters(); } else { UI.search.value = v; applyFilters(); document.getElementById('raw-title').textContent = `Фільтр: ${v.substring(0, 30)}...`; document.querySelector('[data-tab="raw"]').click(); } };
     window.resetFilter = () => { UI.search.value = ""; UI.pkgFilter.value = ""; applyFilters(); document.getElementById('raw-title').textContent = "Реєстр записів"; };
-    function updateChart(id, type, data, options = {}) { if (charts[id]) charts[id].destroy(); charts[id] = new Chart(document.getElementById(id), { type, data, options: { responsive: true, maintainAspectRatio: false, ...options } }); }
+    function updateChart(id, type, data, options = {}) { if (charts[id]) charts[id].destroy(); const ctx = document.getElementById(id); if (ctx) charts[id] = new Chart(ctx, { type, data, options: { responsive: true, maintainAspectRatio: false, ...options } }); }
     function formatDate(v, short = false) { const d = new Date(v); if (isNaN(d)) return String(v).split(' ')[0]; return short ? d.toLocaleDateString('uk-UA', {day:'2-digit', month:'2-digit'}) : d.toLocaleDateString('uk-UA'); }
 </script>
 <style> @keyframes spin { to { transform: rotate(360deg); } } </style>
